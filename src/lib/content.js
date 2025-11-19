@@ -38,6 +38,64 @@ export const DEFAULT_CONTENT = {
   footer: {
     copyright: '© 2025 All Rights Reserved.',
     socialLinks: []
+  },
+  about: {
+    hero: {
+      subtitle: 'STORY',
+      title: 'About Me',
+      description: 'My Story'
+    },
+    timeline: {
+      subtitle: 'TIMELINE',
+      title: 'Timeline',
+      period: '2015 - Now',
+      items: []
+    },
+    values: {
+      subtitle: 'VALUES',
+      title: 'Values',
+      items: [],
+      product: {
+        subtitle: 'Product',
+        title: 'Product Title',
+        description: 'Product Description',
+        linkText: 'Link',
+        linkUrl: '#'
+      }
+    },
+    philosophy: {
+      subtitle: 'PHILOSOPHY',
+      title: 'Philosophy',
+      description: 'Philosophy Description',
+      ctaText: 'Contact',
+      ctaUrl: 'contact.html'
+    }
+  },
+  contact: {
+    hero: {
+      subtitle: 'CONTACT',
+      title: 'Contact Me',
+      description: 'Get in touch'
+    },
+    cards: {
+      email: {
+        subtitle: 'EMAIL',
+        address: 'email@example.com',
+        note: 'Note'
+      },
+      social: {
+        subtitle: 'SOCIAL',
+        items: []
+      }
+    },
+    form: {
+      subtitle: 'FORM',
+      title: 'Form Title',
+      note: 'Note'
+    },
+    services: {
+      items: []
+    }
   }
 };
 
@@ -75,7 +133,27 @@ export const mergeContent = (data = {}) => {
       : DEFAULT_CONTENT.footer.socialLinks
   };
 
-  return { site, header, hero, websites, featuredPosts, footer };
+  const about = {
+    hero: mergeSection(data.about?.hero, DEFAULT_CONTENT.about.hero),
+    timeline: mergeListSection(data.about?.timeline, DEFAULT_CONTENT.about.timeline),
+    values: {
+      ...mergeListSection(data.about?.values, DEFAULT_CONTENT.about.values),
+      product: mergeSection(data.about?.values?.product, DEFAULT_CONTENT.about.values.product)
+    },
+    philosophy: mergeSection(data.about?.philosophy, DEFAULT_CONTENT.about.philosophy)
+  };
+
+  const contact = {
+    hero: mergeSection(data.contact?.hero, DEFAULT_CONTENT.contact.hero),
+    cards: {
+      email: mergeSection(data.contact?.cards?.email, DEFAULT_CONTENT.contact.cards.email),
+      social: mergeListSection(data.contact?.cards?.social, DEFAULT_CONTENT.contact.cards.social)
+    },
+    form: mergeSection(data.contact?.form, DEFAULT_CONTENT.contact.form),
+    services: mergeListSection(data.contact?.services, DEFAULT_CONTENT.contact.services)
+  };
+
+  return { site, header, hero, websites, featuredPosts, footer, about, contact };
 };
 
 export const fetchSiteContent = async () => {

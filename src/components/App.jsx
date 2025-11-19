@@ -3,6 +3,9 @@ import HeaderBar from './HeaderBar.jsx';
 import WebsiteItem from './WebsiteItem.jsx';
 import FeaturedPostItem from './FeaturedPostItem.jsx';
 import SocialLink from './SocialLink.jsx';
+import Hero from './Hero.jsx';
+import About from './About.jsx';
+import Contact from './Contact.jsx';
 import { applyFavicon } from '../lib/favicon.js';
 import { loadSiteContent } from '../lib/content.js';
 
@@ -10,49 +13,14 @@ const LoadingState = () => (
   <div className="flex justify-center items-center h-screen text-gray-600">内容加载中...</div>
 );
 
-const App = () => {
-  const [content, setContent] = React.useState(null);
-
-  React.useEffect(() => {
-    let isMounted = true;
-
-    const bootstrap = async () => {
-      const safeContent = await loadSiteContent();
-      if (!isMounted) return;
-
-      applyFavicon(safeContent.site?.favicon);
-      setContent(safeContent);
-    };
-
-    bootstrap();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  if (!content) {
-    return <LoadingState />;
-  }
-
+const Home = ({ content }) => {
   const { header, hero, websites, featuredPosts, footer } = content;
 
   return (
     <div className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
       <HeaderBar header={header} />
 
-      <section className="mb-12 sm:mb-16 md:mb-20">
-        <h1 className="text-red-500 text-sm font-bold mb-4 sm:mb-6 tracking-widest">{hero.subtitle}</h1>
-        <h2
-          className="text-6xl font-bold mb-8 sm:mb-10 leading-tight display-font tracking-tight rich-text"
-          dangerouslySetInnerHTML={{ __html: hero.title }}
-          style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)', fontWeight: 700 }}
-        ></h2>
-        <p
-          className="text-xl sm:text-2xl mb-6 sm:mb-8 text-gray-700 max-w-3xl leading-relaxed rich-text"
-          dangerouslySetInnerHTML={{ __html: hero.description }}
-        ></p>
-      </section>
+      <Hero subtitle={hero.subtitle} title={hero.title} description={hero.description} />
 
       <section className="mb-12 sm:mb-16 md:mb-20">
         <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 display-font">{websites.title}</h2>
@@ -92,6 +60,44 @@ const App = () => {
       </footer>
     </div>
   );
+};
+
+const App = () => {
+  const [content, setContent] = React.useState(null);
+  const [currentPath, setCurrentPath] = React.useState(
+    typeof window !== 'undefined' ? window.location.pathname : ''
+  );
+
+  React.useEffect(() => {
+    let isMounted = true;
+
+    const bootstrap = async () => {
+      const safeContent = await loadSiteContent();
+      if (!isMounted) return;
+
+      applyFavicon(safeContent.site?.favicon);
+      setContent(safeContent);
+    };
+
+    bootstrap();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  if (!content) {
+    return <LoadingState />;
+  }
+
+  if (currentPath.endsWith('/about.html')) {
+    return <About content={content} />;
+  }
+  if (currentPath.endsWith('/contact.html')) {
+    return <Contact content={content} />;
+  }
+
+  return <Home content={content} />;
 };
 
 export default App;
