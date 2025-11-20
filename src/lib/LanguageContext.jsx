@@ -14,6 +14,13 @@ export const LanguageProvider = ({ children, content }) => {
   const [language, setLanguage] = useState('zh');
 
   useEffect(() => {
+    // Check localStorage first
+    const savedLang = localStorage.getItem('language');
+    if (savedLang) {
+      setLanguage(savedLang);
+      return;
+    }
+
     // Detect browser language
     const browserLang = navigator.language || navigator.userLanguage;
     if (browserLang.toLowerCase().startsWith('en')) {
@@ -26,7 +33,11 @@ export const LanguageProvider = ({ children, content }) => {
   const currentContent = content ? content[language] : null;
 
   const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 'zh' ? 'en' : 'zh'));
+    setLanguage((prev) => {
+      const newLang = prev === 'zh' ? 'en' : 'zh';
+      localStorage.setItem('language', newLang);
+      return newLang;
+    });
   };
 
   const value = {

@@ -83,8 +83,11 @@ const MainContent = () => {
   );
 
   React.useEffect(() => {
-    if (content?.site?.favicon) {
-      applyFavicon(content.site.favicon);
+    if (content?.site) {
+      document.title = content.site.title;
+      if (content.site.favicon) {
+        applyFavicon(content.site.favicon);
+      }
     }
   }, [content]);
 

@@ -238,6 +238,34 @@
         "title": "写下你的想法",
         "note": "平均响应时间：<strong class=\"text-gray-700\">12h</strong>"
       },
+      "actions": {
+        "writeEmail": "写邮件",
+        "copy": "复制",
+        "copied": "已复制"
+      },
+      "formLabels": {
+        "name": "称呼",
+        "email": "邮箱",
+        "topic": "项目类型",
+        "message": "简要说明"
+      },
+      "formPlaceholders": {
+        "name": "例如：李雷 / 小团队 / 品牌方",
+        "email": "you@example.com",
+        "message": "目标、时间、你期待的成果..."
+      },
+      "formOptions": {
+        "consulting": "产品 / 体验咨询",
+        "content": "内容共创",
+        "friend": "生活交友",
+        "other": "其他想法"
+      },
+      "formSubmit": {
+        "default": "发送给 Wenjie",
+        "sending": "发送中...",
+        "success": "发送成功！我会尽快回复",
+        "error": "发送失败，请稍后重试"
+      },
       "services": {
         "items": [
           {
@@ -497,6 +525,34 @@
         "subtitle": "PROJECT INTAKE",
         "title": "Write Down Your Ideas",
         "note": "Average response time: <strong class=\"text-gray-700\">12h</strong>"
+      },
+      "actions": {
+        "writeEmail": "Write Email",
+        "copy": "Copy",
+        "copied": "Copied"
+      },
+      "formLabels": {
+        "name": "Name",
+        "email": "Email",
+        "topic": "Project Type",
+        "message": "Brief Description"
+      },
+      "formPlaceholders": {
+        "name": "e.g. Li Lei / Small Team / Brand",
+        "email": "you@example.com",
+        "message": "Goals, timeline, expected outcomes..."
+      },
+      "formOptions": {
+        "consulting": "Product / Experience Consulting",
+        "content": "Content Co-Creation",
+        "friend": "Making Friends",
+        "other": "Other Ideas"
+      },
+      "formSubmit": {
+        "default": "Send to Wenjie",
+        "sending": "Sending...",
+        "success": "Sent successfully! I'll reply soon.",
+        "error": "Failed to send, please try again later."
       },
       "services": {
         "items": [

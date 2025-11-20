@@ -92,6 +92,34 @@ const DEFAULT_CONTENT_SINGLE = {
       title: 'Form Title',
       note: 'Note',
     },
+    actions: {
+      writeEmail: 'Write Email',
+      copy: 'Copy',
+      copied: 'Copied',
+    },
+    formLabels: {
+      name: 'Name',
+      email: 'Email',
+      topic: 'Project Type',
+      message: 'Brief Description',
+    },
+    formPlaceholders: {
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+    },
+    formOptions: {
+      consulting: 'Consulting',
+      content: 'Content',
+      friend: 'Friend',
+      other: 'Other',
+    },
+    formSubmit: {
+      default: 'Send',
+      sending: 'Sending...',
+      success: 'Sent!',
+      error: 'Error',
+    },
     services: {
       items: [],
     },
@@ -128,8 +156,10 @@ const mergeSingleContent = (data = {}, fallback = {}) => {
   const websites = mergeListSection(data.websites, fallback.websites);
   const featuredPosts = {
     ...mergeListSection(data.featuredPosts, fallback.featuredPosts),
-    seeAllText: data.featuredPosts?.seeAllText ?? fallback.featuredPosts.seeAllText,
-    seeAllUrl: data.featuredPosts?.seeAllUrl ?? fallback.featuredPosts.seeAllUrl,
+    seeAllText:
+      data.featuredPosts?.seeAllText ?? fallback.featuredPosts.seeAllText,
+    seeAllUrl:
+      data.featuredPosts?.seeAllUrl ?? fallback.featuredPosts.seeAllUrl,
   };
   const footer = {
     ...mergeSection(data.footer, fallback.footer),
@@ -148,10 +178,7 @@ const mergeSingleContent = (data = {}, fallback = {}) => {
         fallback.about.values.product
       ),
     },
-    philosophy: mergeSection(
-      data.about?.philosophy,
-      fallback.about.philosophy
-    ),
+    philosophy: mergeSection(data.about?.philosophy, fallback.about.philosophy),
   };
 
   const contact = {
@@ -167,6 +194,23 @@ const mergeSingleContent = (data = {}, fallback = {}) => {
       ),
     },
     form: mergeSection(data.contact?.form, fallback.contact.form),
+    actions: mergeSection(data.contact?.actions, fallback.contact.actions),
+    formLabels: mergeSection(
+      data.contact?.formLabels,
+      fallback.contact.formLabels
+    ),
+    formPlaceholders: mergeSection(
+      data.contact?.formPlaceholders,
+      fallback.contact.formPlaceholders
+    ),
+    formOptions: mergeSection(
+      data.contact?.formOptions,
+      fallback.contact.formOptions
+    ),
+    formSubmit: mergeSection(
+      data.contact?.formSubmit,
+      fallback.contact.formSubmit
+    ),
     services: mergeListSection(
       data.contact?.services,
       fallback.contact.services

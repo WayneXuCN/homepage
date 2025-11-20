@@ -6,7 +6,17 @@ import SocialLink from './SocialLink.jsx';
 
 const Contact = ({ content }) => {
   const { header, contact, footer } = content;
-  const { hero, cards, form: formContent, services } = contact;
+  const {
+    hero,
+    cards,
+    form: formContent,
+    services,
+    actions,
+    formLabels,
+    formPlaceholders,
+    formOptions,
+    formSubmit,
+  } = contact;
   const form = useRef();
   const [status, setStatus] = useState('idle'); // idle, sending, success, error
   const [copied, setCopied] = useState(false);
@@ -97,7 +107,7 @@ const Contact = ({ content }) => {
               href={`mailto:${cards.email.address}`}
               className="flex-1 bg-black text-white text-center py-3 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors shadow-sm hover:shadow-md"
             >
-              写邮件
+              {actions?.writeEmail || '写邮件'}
             </a>
             <button
               onClick={handleCopyEmail}
@@ -105,11 +115,13 @@ const Contact = ({ content }) => {
             >
               {copied ? (
                 <span className="text-green-600">
-                  <i className="fas fa-check mr-2"></i>已复制
+                  <i className="fas fa-check mr-2"></i>
+                  {actions?.copied || '已复制'}
                 </span>
               ) : (
                 <span>
-                  <i className="far fa-copy mr-2"></i>复制
+                  <i className="far fa-copy mr-2"></i>
+                  {actions?.copy || '复制'}
                 </span>
               )}
             </button>
@@ -177,7 +189,7 @@ const Contact = ({ content }) => {
               htmlFor="name"
               className="block text-sm font-medium text-gray-600 mb-2"
             >
-              称呼
+              {formLabels?.name || '称呼'}
             </label>
             <input
               id="name"
@@ -185,7 +197,9 @@ const Contact = ({ content }) => {
               type="text"
               required
               className="w-full border border-gray-200 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
-              placeholder="例如：李雷 / 小团队 / 品牌方"
+              placeholder={
+                formPlaceholders?.name || '例如：李雷 / 小团队 / 品牌方'
+              }
             />
           </div>
           <div>
@@ -193,7 +207,7 @@ const Contact = ({ content }) => {
               htmlFor="email"
               className="block text-sm font-medium text-gray-600 mb-2"
             >
-              邮箱
+              {formLabels?.email || '邮箱'}
             </label>
             <input
               id="email"
@@ -201,7 +215,7 @@ const Contact = ({ content }) => {
               type="email"
               required
               className="w-full border border-gray-200 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
-              placeholder="you@example.com"
+              placeholder={formPlaceholders?.email || 'you@example.com'}
             />
           </div>
           <div>
@@ -209,17 +223,23 @@ const Contact = ({ content }) => {
               htmlFor="topic"
               className="block text-sm font-medium text-gray-600 mb-2"
             >
-              项目类型
+              {formLabels?.topic || '项目类型'}
             </label>
             <select
               id="topic"
               name="topic"
               className="w-full border border-gray-200 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
             >
-              <option value="consulting">产品 / 体验咨询</option>
-              <option value="content">内容共创</option>
-              <option value="friend">生活交友</option>
-              <option value="other">其他想法</option>
+              <option value="consulting">
+                {formOptions?.consulting || '产品 / 体验咨询'}
+              </option>
+              <option value="content">
+                {formOptions?.content || '内容共创'}
+              </option>
+              <option value="friend">
+                {formOptions?.friend || '生活交友'}
+              </option>
+              <option value="other">{formOptions?.other || '其他想法'}</option>
             </select>
           </div>
           <div>
@@ -227,7 +247,7 @@ const Contact = ({ content }) => {
               htmlFor="message"
               className="block text-sm font-medium text-gray-600 mb-2"
             >
-              简要说明
+              {formLabels?.message || '简要说明'}
             </label>
             <textarea
               id="message"
@@ -235,7 +255,9 @@ const Contact = ({ content }) => {
               rows="5"
               required
               className="w-full border border-gray-200 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
-              placeholder="目标、时间、你期待的成果..."
+              placeholder={
+                formPlaceholders?.message || '目标、时间、你期待的成果...'
+              }
             ></textarea>
           </div>
           <button
@@ -250,12 +272,12 @@ const Contact = ({ content }) => {
             } disabled:opacity-70 disabled:cursor-not-allowed`}
           >
             {status === 'sending'
-              ? '发送中...'
+              ? formSubmit?.sending || '发送中...'
               : status === 'success'
-                ? '发送成功！我会尽快回复'
+                ? formSubmit?.success || '发送成功！我会尽快回复'
                 : status === 'error'
-                  ? '发送失败，请稍后重试'
-                  : '发送给 Wenjie'}
+                  ? formSubmit?.error || '发送失败，请稍后重试'
+                  : formSubmit?.default || '发送给 Wenjie'}
           </button>
         </form>
       </section>

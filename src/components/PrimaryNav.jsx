@@ -4,7 +4,7 @@ import { useLanguage } from '../lib/LanguageContext.jsx';
 const PrimaryNav = () => {
   const { content } = useLanguage();
   const navLinks = content?.nav || [];
-  
+
   const currentPath =
     typeof window !== 'undefined' ? window.location.pathname : '';
 
