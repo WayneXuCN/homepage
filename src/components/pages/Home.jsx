@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Hero from '../ui/Hero.jsx';
 import WebsiteItem from '../ui/WebsiteItem.jsx';
 import FeaturedPostItem from '../ui/FeaturedPostItem.jsx';
@@ -37,7 +37,7 @@ const Home = ({ content }) => {
         </div>
         <div className="flex justify-end mt-8 sm:mt-10">
           <Link
-            to={featuredPosts.seeAllUrl}
+            href={featuredPosts.seeAllUrl}
             className="text-pink-500 font-medium flex items-center hover:text-pink-600 transition-colors text-base sm:text-lg"
           >
             {featuredPosts.seeAllText}{' '}

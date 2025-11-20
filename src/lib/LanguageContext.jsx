@@ -1,64 +1,41 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+'use client';
+
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import contentData from '../../content.json';
 
 const LanguageContext = createContext();
 
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
-};
-
-export const LanguageProvider = ({ children, content }) => {
+export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState('zh');
+  const [content, setContent] = useState(contentData.zh);
 
   useEffect(() => {
-    try {
-      // Check localStorage first
-      const savedLang = localStorage.getItem('language');
-      if (savedLang) {
-        setLanguage(savedLang);
-        return;
-      }
-
-      // Detect browser language
-      const browserLang = navigator.language || navigator.userLanguage;
-      if (browserLang && browserLang.toLowerCase().startsWith('en')) {
-        setLanguage('en');
-      } else {
-        setLanguage('zh');
-      }
-    } catch (e) {
-      console.warn('Failed to access localStorage or navigator:', e);
-      setLanguage('zh');
+    // Check for saved language preference
+    const savedLang = localStorage.getItem('language');
+    if (savedLang && (savedLang === 'zh' || savedLang === 'en')) {
+      setLanguage(savedLang);
+      setContent(contentData[savedLang]);
     }
   }, []);
 
-  const currentContent = content ? content[language] : null;
-
   const toggleLanguage = () => {
-    setLanguage((prev) => {
-      const newLang = prev === 'zh' ? 'en' : 'zh';
-      try {
-        localStorage.setItem('language', newLang);
-      } catch (e) {
-        console.warn('Failed to save language to localStorage:', e);
-      }
-      return newLang;
-    });
-  };
-
-  const value = {
-    language,
-    setLanguage,
-    toggleLanguage,
-    content: currentContent,
+    const newLang = language === 'zh' ? 'en' : 'zh';
+    setLanguage(newLang);
+    setContent(contentData[newLang]);
+    localStorage.setItem('language', newLang);
   };
 
   return (
-    <LanguageContext.Provider value={value}>
+    <LanguageContext.Provider value={{ language, content, toggleLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
+};
+
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (context === undefined) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
 };

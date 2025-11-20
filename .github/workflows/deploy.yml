@@ -26,7 +26,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             set -e  # 遇到错误立即退出
-            cd /opt/1panel/apps/openresty/openresty/www/sites/wenjiexusite/index
+            cd /opt/1panel/apps/openresty/openresty/www/sites/wenjiexusite/SimplePortfolio
 
             # 设置代理加速
             git remote set-url origin https://gh.xmly.dev/https://github.com/WayneXuCN/SimplePortfolio
@@ -41,9 +41,14 @@ jobs:
             npm ci
             npm run build
 
-            # 设置文件权限为 PHP-FPM 用户
-            chown -R 1000:1000 .
+            # 将 out 文件夹内容移动到 index 目录
+            rm -rf /opt/1panel/apps/openresty/openresty/www/sites/wenjiexusite/index/*
+            cp -r out/* /opt/1panel/apps/openresty/openresty/www/sites/wenjiexusite/index/
+
+            # 设置index文件权限为 PHP-FPM 用户
+            chown -R 1000:1000 /opt/1panel/apps/openresty/openresty/www/sites/wenjiexusite/index
 
             echo "✅ 已成功拉取 main 分支最新内容"
-            echo "✅ 文件权限已设置为 1000:1000"
+            echo "✅ 构建文件已移动到 index 目录"
+            echo "✅ index 目录文件权限已设置为 1000:1000"
             echo "🚀 部署完成时间: $(date)"

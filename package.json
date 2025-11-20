@@ -1,16 +1,13 @@
 {
-  "name": "portfolio",
+  "name": "SimplePortfolio",
   "version": "1.0.0",
   "description": "Personal portfolio website built with React and Tailwind CSS",
   "main": "app.js",
   "scripts": {
-    "build:css": "cross-env BROWSERSLIST_IGNORE_OLD_DATA=1 tailwindcss -i ./src/styles/main.css -o ./assets/css/main.css --minify",
-    "watch:css": "cross-env BROWSERSLIST_IGNORE_OLD_DATA=1 tailwindcss -i ./src/styles/main.css -o ./assets/css/main.css --watch",
-    "build:js": "node build.js",
-    "watch:js": "node build.js --watch",
-    "build": "npm-run-all build:css build:js",
-    "dev": "npm-run-all --parallel watch:css watch:js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "format": "prettier --write '**/*.{js,jsx,json,css,html}'",
     "format:check": "prettier --check '**/*.{js,jsx,json,css,html}'"
   },
@@ -21,7 +18,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/WayneXuCN/homepage/issues"
   },
@@ -29,8 +25,6 @@
   "devDependencies": {
     "autoprefixer": "^10.4.22",
     "cross-env": "^10.1.0",
-    "dotenv": "^17.2.3",
-    "esbuild": "^0.27.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
@@ -40,6 +34,6 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "react-router-dom": "^7.9.6"
+    "next": "^16.0.3"
   }
 }

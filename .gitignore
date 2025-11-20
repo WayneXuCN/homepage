@@ -40,3 +40,7 @@ yarn-error.log*
 
 # env
 .env
+
+# Next.js 编译和缓存文件
+.next/
+out/
