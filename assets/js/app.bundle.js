@@ -22628,6 +22628,51 @@
     }
   });
 
+  // src/lib/seo.js
+  var updateMetaTags;
+  var init_seo = __esm({
+    "src/lib/seo.js"() {
+      updateMetaTags = (siteConfig, lang) => {
+        if (!siteConfig) return;
+        if (siteConfig.title) {
+          document.title = siteConfig.title;
+        }
+        if (lang) {
+          document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+        }
+        const updateMeta = (name, content) => {
+          if (!content) return;
+          let meta = document.querySelector(`meta[name="${name}"]`);
+          if (!meta) {
+            meta = document.createElement("meta");
+            meta.name = name;
+            document.head.appendChild(meta);
+          }
+          meta.setAttribute("content", content);
+        };
+        updateMeta("description", siteConfig.description);
+        updateMeta("keywords", siteConfig.keywords);
+        updateMeta("author", siteConfig.author);
+        const updateOgMeta = (property, content) => {
+          if (!content) return;
+          let meta = document.querySelector(`meta[property="${property}"]`);
+          if (!meta) {
+            meta = document.createElement("meta");
+            meta.setAttribute("property", property);
+            document.head.appendChild(meta);
+          }
+          meta.setAttribute("content", content);
+        };
+        updateOgMeta("og:title", siteConfig.title);
+        updateOgMeta("og:description", siteConfig.description);
+        updateOgMeta("og:locale", lang === "zh" ? "zh_CN" : "en_US");
+        if (siteConfig.favicon?.appleTouchIcon) {
+          updateOgMeta("og:image", siteConfig.favicon.appleTouchIcon);
+        }
+      };
+    }
+  });
+
   // src/components/App.jsx
   var import_react11, LoadingState, Home, MainContent, App, App_default;
   var init_App = __esm({
@@ -22643,6 +22688,7 @@
       init_favicon();
       init_content();
       init_LanguageContext();
+      init_seo();
       LoadingState = () => /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-center items-center h-screen text-gray-600" }, "\u5185\u5BB9\u52A0\u8F7D\u4E2D...");
       Home = ({ content }) => {
         const { header, hero, websites, featuredPosts, footer } = content;
@@ -22665,18 +22711,18 @@
         ))), /* @__PURE__ */ import_react11.default.createElement("footer", { className: "pt-12 sm:pt-16 pb-6 sm:pb-8 border-t border-gray-200" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-between items-center flex-col md:flex-row gap-6 md:gap-0" }, /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-gray-600 text-base sm:text-lg text-center md:text-left" }, footer.copyright), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex space-x-4 sm:space-x-6" }, footer.socialLinks.map((link) => /* @__PURE__ */ import_react11.default.createElement(SocialLink_default, { key: link.url, link }))))));
       };
       MainContent = () => {
-        const { content } = useLanguage();
+        const { content, language } = useLanguage();
         const [currentPath, setCurrentPath] = import_react11.default.useState(
           typeof window !== "undefined" ? window.location.pathname : ""
         );
         import_react11.default.useEffect(() => {
           if (content?.site) {
-            document.title = content.site.title;
+            updateMetaTags(content.site, language);
             if (content.site.favicon) {
               applyFavicon(content.site.favicon);
             }
           }
-        }, [content]);
+        }, [content, language]);
         if (!content) {
           return /* @__PURE__ */ import_react11.default.createElement(LoadingState, null);
         }

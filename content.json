@@ -3,15 +3,26 @@
     "site": {
       "title": "Wenjie Xu - Portfolio",
       "author": "徐文杰",
+      "description": "Wenjie Xu 的个人作品集，展示精选作品与项目实践。",
+      "keywords": "徐文杰, 作品集, 前端开发, 产品经理, 内容创作",
       "favicon": {
         "ico": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/favicon.ico",
         "appleTouchIcon": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg"
       }
     },
     "nav": [
-      { "label": "首页", "href": "index.html" },
-      { "label": "关于", "href": "about.html" },
-      { "label": "联系", "href": "contact.html" }
+      {
+        "label": "首页",
+        "href": "index.html"
+      },
+      {
+        "label": "关于",
+        "href": "about.html"
+      },
+      {
+        "label": "联系",
+        "href": "contact.html"
+      }
     ],
     "header": {
       "avatar": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg",
@@ -291,15 +302,26 @@
     "site": {
       "title": "Wenjie Xu - Portfolio",
       "author": "Wenjie Xu",
+      "description": "Wenjie Xu's personal portfolio, showcasing selected works and projects.",
+      "keywords": "Wenjie Xu, Portfolio, Frontend Development, Product Manager, Content Creation",
       "favicon": {
         "ico": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/favicon.ico",
         "appleTouchIcon": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg"
       }
     },
     "nav": [
-      { "label": "Home", "href": "index.html" },
-      { "label": "About", "href": "about.html" },
-      { "label": "Contact", "href": "contact.html" }
+      {
+        "label": "Home",
+        "href": "index.html"
+      },
+      {
+        "label": "About",
+        "href": "about.html"
+      },
+      {
+        "label": "Contact",
+        "href": "contact.html"
+      }
     ],
     "header": {
       "avatar": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg",

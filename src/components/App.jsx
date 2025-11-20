@@ -9,6 +9,7 @@ import Contact from './Contact.jsx';
 import { applyFavicon } from '../lib/favicon.js';
 import { loadSiteContent } from '../lib/content.js';
 import { LanguageProvider, useLanguage } from '../lib/LanguageContext.jsx';
+import { updateMetaTags } from '../lib/seo.js';
 
 const LoadingState = () => (
   <div className="flex justify-center items-center h-screen text-gray-600">
@@ -77,19 +78,19 @@ const Home = ({ content }) => {
 };
 
 const MainContent = () => {
-  const { content } = useLanguage();
+  const { content, language } = useLanguage();
   const [currentPath, setCurrentPath] = React.useState(
     typeof window !== 'undefined' ? window.location.pathname : ''
   );
 
   React.useEffect(() => {
     if (content?.site) {
-      document.title = content.site.title;
+      updateMetaTags(content.site, language);
       if (content.site.favicon) {
         applyFavicon(content.site.favicon);
       }
     }
-  }, [content]);
+  }, [content, language]);
 
   if (!content) {
     return <LoadingState />;
