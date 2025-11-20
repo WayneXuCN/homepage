@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useLanguage } from '../lib/LanguageContext.jsx';
+import { useLanguage } from '../../lib/LanguageContext.jsx';
 
 const PrimaryNav = () => {
   const { content } = useLanguage();

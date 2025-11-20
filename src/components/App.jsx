@@ -1,83 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
-import HeaderBar from './HeaderBar.jsx';
-import WebsiteItem from './WebsiteItem.jsx';
-import FeaturedPostItem from './FeaturedPostItem.jsx';
-import SocialLink from './SocialLink.jsx';
-import Hero from './Hero.jsx';
-import About from './About.jsx';
-import Contact from './Contact.jsx';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Layout from './layout/Layout.jsx';
+import Home from './pages/Home.jsx';
+import About from './pages/About.jsx';
+import Contact from './pages/Contact.jsx';
+import LoadingState from './ui/LoadingState.jsx';
 import { applyFavicon } from '../lib/favicon.js';
 import { loadSiteContent } from '../lib/content.js';
 import { LanguageProvider, useLanguage } from '../lib/LanguageContext.jsx';
 import { ThemeProvider } from '../lib/ThemeContext.jsx';
 import { updateMetaTags } from '../lib/seo.js';
-
-const LoadingState = () => (
-  <div className="flex justify-center items-center h-screen text-gray-600 dark:text-gray-400">
-    内容加载中...
-  </div>
-);
-
-const Home = ({ content }) => {
-  const { header, hero, websites, featuredPosts, footer } = content;
-
-  return (
-    <div className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16 animate-fade-in">
-      <HeaderBar header={header} />
-
-      <Hero
-        subtitle={hero.subtitle}
-        title={hero.title}
-        description={hero.description}
-      />
-
-      <section className="mb-12 sm:mb-16 md:mb-20">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 display-font">
-          {websites.title}
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-          {websites.items.map((item) => (
-            <WebsiteItem key={item.id || item.title} item={item} />
-          ))}
-        </div>
-      </section>
-
-      <section className="mb-12 sm:mb-16 md:mb-20">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 display-font">
-          {featuredPosts.title}
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-          {featuredPosts.items.map((item) => (
-            <FeaturedPostItem key={item.id || item.title} item={item} />
-          ))}
-        </div>
-        <div className="flex justify-end mt-8 sm:mt-10">
-          <Link
-            to={featuredPosts.seeAllUrl}
-            className="text-pink-500 font-medium flex items-center hover:text-pink-600 transition-colors text-base sm:text-lg"
-          >
-            {featuredPosts.seeAllText}{' '}
-            <i className="fas fa-arrow-right ml-2"></i>
-          </Link>
-        </div>
-      </section>
-
-      <footer className="pt-12 sm:pt-16 pb-6 sm:pb-8 border-t border-gray-200 dark:border-gray-800">
-        <div className="flex justify-between items-center flex-col md:flex-row gap-6 md:gap-0">
-          <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg text-center md:text-left">
-            {footer.copyright}
-          </p>
-          <div className="flex space-x-4 sm:space-x-6">
-            {footer.socialLinks.map((link) => (
-              <SocialLink key={link.url} link={link} />
-            ))}
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-};
 
 const MainContent = () => {
   const { content, language } = useLanguage();
@@ -97,27 +29,26 @@ const MainContent = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Home content={content} />} />
-      <Route path="/index.html" element={<Home content={content} />} />
-      <Route path="/about.html" element={<About content={content} />} />
-      <Route path="/contact.html" element={<Contact content={content} />} />
-      {/* Fallback for unknown routes */}
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home content={content} />} />
+        <Route path="/index.html" element={<Home content={content} />} />
+        <Route path="/about.html" element={<About content={content} />} />
+        <Route path="/contact.html" element={<Contact content={content} />} />
+        {/* Fallback for unknown routes */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
     </Routes>
   );
 };
 
 const App = () => {
-  console.log('App component rendering...');
   const [fullContent, setFullContent] = React.useState(null);
 
   React.useEffect(() => {
     let isMounted = true;
 
     const bootstrap = async () => {
-      console.log('Bootstrapping content...');
       const safeContent = await loadSiteContent();
-      console.log('Content loaded:', safeContent ? 'success' : 'failed');
       if (!isMounted) return;
       setFullContent(safeContent);
     };
@@ -130,11 +61,9 @@ const App = () => {
   }, []);
 
   if (!fullContent) {
-    console.log('Content not ready, showing loading state');
     return <LoadingState />;
   }
 
-  console.log('Content ready, rendering providers');
   return (
     <BrowserRouter>
       <LanguageProvider content={fullContent}>

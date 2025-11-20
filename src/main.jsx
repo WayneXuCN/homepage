@@ -9,6 +9,5 @@ if (!container) {
   throw new Error('未找到 id 为 root 的容器节点');
 }
 
-console.log('Found root container, rendering app...');
 const root = createRoot(container);
 root.render(<App />);

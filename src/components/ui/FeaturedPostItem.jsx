@@ -1,9 +1,9 @@
 import React from 'react';
-import { openInNewTab } from '../lib/navigation.js';
+import { openInNewTab } from '../../lib/navigation.js';
 
-const WebsiteItem = ({ item }) => (
+const FeaturedPostItem = ({ item }) => (
   <div
-    className="relative overflow-hidden rounded-lg shadow-md card-hover portfolio-item website-item"
+    className="relative overflow-hidden rounded-lg shadow-md card-hover featured-post-item website-item"
     onClick={() => openInNewTab(item.url)}
     role="button"
     tabIndex={0}
@@ -20,9 +20,11 @@ const WebsiteItem = ({ item }) => (
       className="w-full h-64 object-cover"
       loading="lazy"
     />
-    <div className="absolute inset-0 bg-black bg-opacity-40 card-overlay transition-all duration-300 flex flex-col p-6">
+    <div
+      className={`absolute inset-0 ${item.overlayColor} ${item.overlayOpacity} card-overlay transition-all duration-300 flex flex-col p-6`}
+    >
       <div>
-        <h3 className="text-white text-2xl font-bold mb-2">{item.title}</h3>
+        <h3 className="text-white text-xl font-bold mb-2">{item.title}</h3>
         <p className="text-white text-sm opacity-0 transition-opacity duration-300 website-description-text transform translate-y-2 transition-transform duration-300">
           {item.description}
         </p>
@@ -31,4 +33,4 @@ const WebsiteItem = ({ item }) => (
   </div>
 );
 
-export default WebsiteItem;
+export default FeaturedPostItem;

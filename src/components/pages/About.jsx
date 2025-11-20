@@ -1,17 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HeaderBar from './HeaderBar.jsx';
-import Hero from './Hero.jsx';
-import SocialLink from './SocialLink.jsx';
+import Hero from '../ui/Hero.jsx';
 
 const About = ({ content }) => {
-  const { header, about, footer } = content;
+  const { about } = content;
   const { hero, timeline, values, philosophy } = about;
 
   return (
-    <div className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16 animate-fade-in">
-      <HeaderBar header={header} />
-
+    <>
       <Hero
         subtitle={hero.subtitle}
         title={hero.title}
@@ -110,20 +106,7 @@ const About = ({ content }) => {
           </Link>
         </div>
       </section>
-
-      <footer className="pt-12 sm:pt-16 pb-6 sm:pb-8 border-t border-gray-200 dark:border-gray-800">
-        <div className="flex justify-between items-center flex-col md:flex-row gap-6 md:gap-0">
-          <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg text-center md:text-left">
-            {footer.copyright}
-          </p>
-          <div className="flex space-x-4 sm:space-x-6">
-            {footer.socialLinks.map((link) => (
-              <SocialLink key={link.url} link={link} />
-            ))}
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 };
 
