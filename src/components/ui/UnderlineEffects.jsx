@@ -17,14 +17,13 @@ const UnderlineEffects = () => {
 
     const DEFAULT_HOVER_COLOR = 'transparent';
 
-    const getRandomColor = () =>
-      accentColors[Math.floor(Math.random() * accentColors.length)];
+    const getRandomColor = () => accentColors[Math.floor(Math.random() * accentColors.length)];
 
     const setUnderlineHoverColor = (element, color) => {
       element.style.setProperty('--underline-hover-color', color);
     };
 
-    const bindUnderlineEffect = (element) => {
+    const bindUnderlineEffect = element => {
       if (!element || element.dataset.underlineBound === 'true') {
         return;
       }
@@ -42,7 +41,7 @@ const UnderlineEffects = () => {
 
       element.addEventListener('mouseenter', onMouseEnter);
       element.addEventListener('mouseleave', onMouseLeave);
-      
+
       // Store listeners for potential cleanup (though difficult to fully clean up without weakmaps)
       element._underlineListeners = { onMouseEnter, onMouseLeave };
     };
@@ -55,9 +54,9 @@ const UnderlineEffects = () => {
     setupRandomUnderlineColors();
 
     // Observer for dynamic content
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        mutation.addedNodes.forEach((node) => {
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
           if (node.nodeType !== Node.ELEMENT_NODE) return;
 
           if (node.matches?.('.underline')) {

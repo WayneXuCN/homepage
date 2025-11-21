@@ -1,39 +1,39 @@
 {
-  "name": "SimplePortfolio",
-  "version": "1.0.0",
-  "description": "Personal portfolio website built with React and Tailwind CSS",
-  "main": "app.js",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write '**/*.{js,jsx,json,css,html}'",
-    "format:check": "prettier --check '**/*.{js,jsx,json,css,html}'"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/WayneXuCN/homepage.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/WayneXuCN/homepage/issues"
-  },
-  "homepage": "https://github.com/WayneXuCN/homepage#readme",
-  "devDependencies": {
-    "autoprefixer": "^10.4.22",
-    "cross-env": "^10.1.0",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.5.6",
-    "prettier": "^3.6.2",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "tailwindcss": "^3.4.18"
-  },
-  "dependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "next": "^16.0.3"
-  }
+    "name": "SimplePortfolio",
+    "version": "1.0.0",
+    "description": "Personal portfolio website built with React and Tailwind CSS",
+    "main": "app.js",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "format": "prettier --write '**/*.{js,jsx,json,css,html}'",
+        "format:check": "prettier --check '**/*.{js,jsx,json,css,html}'"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/WayneXuCN/homepage.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/WayneXuCN/homepage/issues"
+    },
+    "homepage": "https://github.com/WayneXuCN/homepage#readme",
+    "devDependencies": {
+        "autoprefixer": "^10.4.22",
+        "cross-env": "^10.1.0",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.5.6",
+        "prettier": "^3.6.2",
+        "react": "^19.2.0",
+        "react-dom": "^19.2.0",
+        "tailwindcss": "^3.4.18"
+    },
+    "dependencies": {
+        "@emailjs/browser": "^4.4.1",
+        "next": "^16.0.3"
+    }
 }

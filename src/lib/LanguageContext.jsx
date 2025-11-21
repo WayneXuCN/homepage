@@ -1,27 +1,31 @@
 'use client';
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import contentData from '../../content.json';
+import { locales, defaultLocale } from '../locales/config';
 
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('zh');
-  const [content, setContent] = useState(contentData.zh);
+  const [language, setLanguage] = useState(defaultLocale);
+  const [content, setContent] = useState(locales[defaultLocale].data);
 
   useEffect(() => {
     // Check for saved language preference
     const savedLang = localStorage.getItem('language');
-    if (savedLang && (savedLang === 'zh' || savedLang === 'en')) {
+    if (savedLang && locales[savedLang]) {
       setLanguage(savedLang);
-      setContent(contentData[savedLang]);
+      setContent(locales[savedLang].data);
     }
   }, []);
 
   const toggleLanguage = () => {
-    const newLang = language === 'zh' ? 'en' : 'zh';
+    const localeKeys = Object.keys(locales);
+    const currentIndex = localeKeys.indexOf(language);
+    const nextIndex = (currentIndex + 1) % localeKeys.length;
+    const newLang = localeKeys[nextIndex];
+
     setLanguage(newLang);
-    setContent(contentData[newLang]);
+    setContent(locales[newLang].data);
     localStorage.setItem('language', newLang);
   };
 

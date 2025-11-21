@@ -33,9 +33,12 @@ src/
 │   ├── Layout.jsx       # Main Layout wrapper
 │   └── ...
 ├── lib/                 # Utilities and Contexts
-│   ├── content.js       # Content loader
 │   ├── LanguageContext.jsx
 │   └── ThemeContext.jsx
+├── locales/             # Language Configuration
+│   ├── config.js        # Locale configuration
+│   ├── en.json          # English content
+│   └── zh.json          # Chinese content
 └── styles/              # Additional styles
 ```
 
@@ -67,7 +70,7 @@ The static files will be generated in the `out/` directory.
 
 ## 📝 Configuration
 
-- **Content**: Edit `content.json` to update site content (text, links, images).
+- **Content**: Edit files in `src/locales/` (`zh.json`, `en.json`) to update site content (text, links, images).
 - **Environment Variables**:
   - Create a `.env` file based on `.env.example` (if available) or add your keys directly.
   - Required for Contact Form:

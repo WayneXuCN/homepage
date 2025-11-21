@@ -1,0 +1,301 @@
+{
+    "site": {
+        "title": "Efficiency Work Methods",
+        "author": "Wenjie Xu",
+        "description": "Wenjie Xu's personal portfolio, showcasing selected works and projects.",
+        "keywords": "Wenjie Xu, Portfolio, Frontend Development, Product Manager, Content Creation",
+        "favicon": {
+            "ico": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/favicon.ico",
+            "appleTouchIcon": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg"
+        }
+    },
+    "nav": [
+        {
+            "label": "Home",
+            "href": "index.html"
+        },
+        {
+            "label": "About",
+            "href": "about.html",
+            "hidden": false
+        },
+        {
+            "label": "Contact",
+            "href": "contact.html",
+            "hidden": false
+        }
+    ],
+    "header": {
+        "avatar": "https://xwj770427414.oss-cn-beijing.aliyuncs.com/img/prof_pic.jpg",
+        "name": "Wenjie Xu"
+    },
+    "hero": {
+        "subtitle": "WENJIE XU",
+        "title": "Stay Curious<br class=\"sm:hidden\"> Stay Authentic",
+        "description": "Collaborating with diverse people is something I truly enjoy.<br>If you want to <a href=\"mailto:wenjie.xu.cn@outlook.com\" class=\"underline\">contact me</a>, I'll be happy to connect!"
+    },
+    "websites": {
+        "title": "Websites",
+        "items": [
+            {
+                "id": "personal",
+                "title": "Personal Site",
+                "subtitle": "My Detailed Personal Introduction",
+                "image": "https://picsum.photos/seed/personal/600/350.jpg",
+                "url": "#",
+                "description": "More information about me"
+            },
+            {
+                "id": "MyWork",
+                "title": "MyWork",
+                "subtitle": "Markdown Editor",
+                "image": "https://picsum.photos/seed/MyWork/600/350.jpg",
+                "url": "#",
+                "description": "A lightweight Markdown editing tool"
+            },
+            {
+                "id": "blog",
+                "title": "Tech Blog",
+                "subtitle": "My Technical Sharing",
+                "image": "https://picsum.photos/seed/blog/600/350.jpg",
+                "url": "#",
+                "description": "Sharing frontend development and other tech content"
+            },
+            {
+                "id": "projects",
+                "title": "Projects",
+                "subtitle": "Portfolio",
+                "image": "https://picsum.photos/seed/projects/600/350.jpg",
+                "url": "#",
+                "description": "View all my projects"
+            }
+        ]
+    },
+    "featuredPosts": {
+        "title": "Featured Posts",
+        "items": [
+            {
+                "id": "how-MyWork-works",
+                "title": "How MyWork Works?",
+                "image": "https://picsum.photos/seed/chart123/600/350.jpg",
+                "url": "#",
+                "description": "Deep dive into MyWork's principles and design philosophy",
+                "overlayColor": "bg-black",
+                "overlayOpacity": "bg-opacity-70"
+            },
+            {
+                "id": "about-MyWork",
+                "title": "About MyWork",
+                "image": "https://picsum.photos/seed/about456/600/350.jpg",
+                "url": "#",
+                "description": "The story and mission of MyWork",
+                "overlayColor": "bg-yellow-500",
+                "overlayOpacity": "bg-opacity-80"
+            },
+            {
+                "id": "markdown-syntax",
+                "title": "Markdown Syntax Guide",
+                "image": "https://picsum.photos/seed/markdown789/600/350.jpg",
+                "url": "#",
+                "description": "Complete Markdown syntax reference guide",
+                "overlayColor": "bg-blue-900",
+                "overlayOpacity": "bg-opacity-80"
+            },
+            {
+                "id": "math-typesetting",
+                "title": "Math Typesetting - use Mathematical notation in blog posts",
+                "image": "https://picsum.photos/seed/math101/600/350.jpg",
+                "url": "#",
+                "description": "Using mathematical formulas and symbols in blog posts",
+                "overlayColor": "bg-black",
+                "overlayOpacity": "bg-opacity-80"
+            },
+            {
+                "id": "rich-content",
+                "title": "Rich Content",
+                "image": "https://picsum.photos/seed/richcontent202/600/350.jpg",
+                "url": "#",
+                "description": "Creating rich and diverse blog content",
+                "overlayColor": "bg-black",
+                "overlayOpacity": "bg-opacity-80"
+            }
+        ],
+        "seeAllText": "See All Posts",
+        "seeAllUrl": "#"
+    },
+    "footer": {
+        "copyright": "© 2025 Wenjie Xu. All Rights Reserved. ICP: 苏ICP备2025220926号",
+        "socialLinks": [
+            {
+                "icon": "fas fa-globe",
+                "url": "https://waynexucn.github.io/",
+                "title": "Personal Site"
+            },
+            {
+                "icon": "far fa-envelope",
+                "url": "mailto:wenjie.xu.cn@outlook.com",
+                "title": "Email"
+            },
+            {
+                "icon": "fab fa-github",
+                "url": "https://github.com/WayneXuCN",
+                "title": "GitHub"
+            },
+            {
+                "icon": "fab fa-weibo",
+                "url": "https://weibo.com/u/6577473146",
+                "title": "Weibo"
+            }
+        ]
+    },
+    "about": {
+        "hero": {
+            "subtitle": "STORY",
+            "title": "Using Personal Brand as a Lab to Connect Content, Tools, and Products",
+            "description": "10+ years of product and content experience, always exploring: How to tell complex topics with <span class=\"underline\">clear structure</span>? How to make tools truly help creators?"
+        },
+        "timeline": {
+            "subtitle": "TIMELINE",
+            "title": "Personal Trajectory",
+            "period": "2015 - Now",
+            "items": [
+                {
+                    "period": "NOW",
+                    "title": "One-Person Company Experiment · Content x SaaS",
+                    "description": "Building a self-driven growth business portfolio around MyWork, knowledge products, and consulting projects. Every version validates: Can small and beautiful tools become a multiplier for creators?"
+                },
+                {
+                    "period": "2019 - 2023",
+                    "title": "Product Lead · Diverse Industries",
+                    "description": "Coordinated product strategies in education, B2B tools, and creator communities, leading cross-functional teams to turn 'abstract inspiration' into live experiences."
+                },
+                {
+                    "period": "2015 - 2018",
+                    "title": "Brand Narrative & Content Operations",
+                    "description": "Learned to connect users with content on the media and brand side—including in-depth reporting, event planning, and knowledge service products."
+                }
+            ]
+        },
+        "values": {
+            "subtitle": "VALUES",
+            "title": "Values & Work Style",
+            "items": [
+                {
+                    "label": "Structure First",
+                    "text": "Any idea lands in notes first, then enters prototype."
+                },
+                {
+                    "label": "Quality Oriented",
+                    "text": "Interface, language, and motion jointly define experience."
+                },
+                {
+                    "label": "Build in Public",
+                    "text": "Put the process in public channels to collect more authentic feedback."
+                }
+            ],
+            "product": {
+                "subtitle": "MyWork",
+                "title": "Why build a new Markdown editor?",
+                "description": "It is the 'Second Brain Console' for creators. I want to integrate syntax hints, structural guidance, and asset management into a clean interface, making creation as free as color mixing.",
+                "linkText": "View Latest Version",
+                "linkUrl": "contact.html"
+            }
+        },
+        "philosophy": {
+            "subtitle": "PHILOSOPHY",
+            "title": "\"Creating products with both aesthetics and utility is a lifelong subject.\"",
+            "description": "If you are also building tools, courses, or content brands, feel free to communicate. We can break down complex projects into a set of clear and executable Roadmaps.",
+            "ctaText": "Start Conversation",
+            "ctaUrl": "contact.html"
+        }
+    },
+    "contact": {
+        "hero": {
+            "subtitle": "LET'S COLLAB",
+            "title": "Keep the Conversation Going, Make Ideas Happen",
+            "description": "Business cooperation, product consulting, or content co-creation can all be initiated here."
+        },
+        "cards": {
+            "email": {
+                "subtitle": "EMAIL",
+                "address": "wenjie.xu.cn@outlook.com",
+                "note": "Whether it's project cooperation, technical discussion, or a simple greeting, you are welcome to write anytime."
+            },
+            "social": {
+                "subtitle": "SOCIAL",
+                "items": [
+                    {
+                        "label": "GitHub",
+                        "url": "https://github.com/WayneXuCN",
+                        "icon": "fab fa-github",
+                        "handle": "@WayneXuCN"
+                    },
+                    {
+                        "label": "Weibo",
+                        "url": "https://weibo.com/u/6577473146",
+                        "icon": "fab fa-weibo",
+                        "handle": "@WayneXuCN"
+                    },
+                    {
+                        "label": "Personal Site",
+                        "url": "https://waynexucn.github.io/",
+                        "icon": "fas fa-globe",
+                        "handle": "waynexucn.github.io"
+                    }
+                ]
+            }
+        },
+        "form": {
+            "subtitle": "PROJECT INTAKE",
+            "title": "Write Down Your Ideas",
+            "note": "Average response time: <strong class=\"text-gray-700\">12h</strong>"
+        },
+        "actions": {
+            "writeEmail": "Write Email",
+            "copy": "Copy",
+            "copied": "Copied"
+        },
+        "formLabels": {
+            "name": "Name",
+            "email": "Email",
+            "topic": "Project Type",
+            "message": "Brief Description"
+        },
+        "formPlaceholders": {
+            "name": "e.g. Li Lei / Small Team / Brand",
+            "email": "you@example.com",
+            "message": "Goals, timeline, expected outcomes..."
+        },
+        "formOptions": {
+            "consulting": "Product / Experience Consulting",
+            "content": "Content Co-Creation",
+            "friend": "Making Friends",
+            "other": "Other Ideas"
+        },
+        "formSubmit": {
+            "default": "Send to Wenjie",
+            "sending": "Sending...",
+            "success": "Sent successfully! I'll reply soon.",
+            "error": "Failed to send, please try again later."
+        },
+        "services": {
+            "items": [
+                {
+                    "subtitle": "CONSULTING",
+                    "title": "Product Diagnosis",
+                    "description": "Quickly sort out product structure, experience breakpoints, and iteration priorities."
+                },
+                {
+                    "subtitle": "CONTENT",
+                    "title": "Co-Creation",
+                    "description": "Co-build courses, white papers, or brand narratives, ensuring both warmth and facts."
+                },
+                {
+                    "subtitle": "TOOLS",
+                    "title": "MyWork",
+                    "description": "If you want to provide suggestions for creation tools, I will prioritize processing them immediately."
+                }
+            ]
+        }
+    }
+}

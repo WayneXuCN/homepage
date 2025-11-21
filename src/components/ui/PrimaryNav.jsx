@@ -11,7 +11,7 @@ const PrimaryNav = () => {
   const pathname = usePathname();
 
   // Helper to check if link is active
-  const isActiveLink = (href) => {
+  const isActiveLink = href => {
     // Handle root path
     if (href === 'index.html' || href === '/') {
       return pathname === '/';
@@ -24,19 +24,19 @@ const PrimaryNav = () => {
   };
 
   // Helper to get correct Next.js href
-  const getHref = (href) => {
+  const getHref = href => {
     if (href === 'index.html') return '/';
     return '/' + href.replace('.html', '');
   };
 
   return (
-    <nav className="flex flex-wrap items-center gap-3 sm:gap-8 text-base font-medium text-gray-600 dark:text-gray-300">
+    <nav className='flex flex-wrap items-center gap-3 sm:gap-8 text-base font-medium text-gray-600 dark:text-gray-300'>
       {navLinks.map((link, index) => {
         const active = isActiveLink(link.href);
         return (
           <React.Fragment key={link.href}>
             {index > 0 && (
-              <span className="text-gray-300 dark:text-gray-600 select-none text-sm sm:text-base">
+              <span className='text-gray-300 dark:text-gray-600 select-none text-sm sm:text-base'>
                 /
               </span>
             )}

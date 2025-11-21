@@ -2,15 +2,14 @@ import React from 'react';
 import { LanguageProvider } from '../lib/LanguageContext';
 import { ThemeProvider } from '../lib/ThemeContext';
 import UnderlineEffects from '../components/ui/UnderlineEffects';
-import contentData from '../../content.json';
+import { locales, defaultLocale } from '../locales/config';
 import './globals.css';
 
 // 获取默认语言的元数据
 const getDefaultMetadata = () => {
-  const defaultLang = 'zh';
-  const siteData = contentData[defaultLang]?.site || contentData.en?.site || {};
+  const siteData = locales[defaultLocale]?.data?.site || {};
   const favicon = siteData.favicon || {};
-  
+
   return {
     title: siteData.title || 'Portfolio',
     description: siteData.description || 'Personal Portfolio Website',
@@ -25,23 +24,19 @@ export const metadata = getDefaultMetadata();
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="zh-CN">
+    <html lang='zh-CN'>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
+          href='https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap'
+          rel='stylesheet'
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap"
-          rel="stylesheet"
+          rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
         />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        />
-        <link rel="stylesheet" href="/assets/css/custom-icons.css" />
+        <link rel='stylesheet' href='/assets/css/custom-icons.css' />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -60,7 +55,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <body className='bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300'>
         <LanguageProvider>
           <ThemeProvider>
             {children}

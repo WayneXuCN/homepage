@@ -33,9 +33,12 @@ src/
 │   ├── Layout.jsx       # 主布局包装器
 │   └── ...
 ├── lib/                 # 工具和上下文
-│   ├── content.js       # 内容加载器
 │   ├── LanguageContext.jsx
 │   └── ThemeContext.jsx
+├── locales/             # 语言配置
+│   ├── config.js        # 语言配置入口
+│   ├── en.json          # 英文内容
+│   └── zh.json          # 中文内容
 └── styles/              # 额外样式
 ```
 
@@ -67,7 +70,7 @@ npm run build
 
 ## 📝 配置
 
-- **内容**: 编辑 `content.json` 来更新网站内容（文本、链接、图片）。
+- **内容**: 编辑 `src/locales/` 目录下的文件 (`zh.json`, `en.json`) 来更新网站内容（文本、链接、图片）。
 - **环境变量**:
   - 根据 `.env.example`（如果可用）创建 `.env` 文件，或直接添加您的密钥。
   - 联系表单需要：
