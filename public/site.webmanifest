@@ -1,0 +1,27 @@
+{
+  "name": "Landing Page of Wenjie Xu",
+  "short_name": "Home",
+  "description": "Landing Page of Wenjie Xu, a Ph.D. student.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/img/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/assets/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "scope": "/",
+  "categories": ["education", "personal", "blog"]
+}

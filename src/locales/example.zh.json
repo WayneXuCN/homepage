@@ -1,9 +1,9 @@
 {
     "site": {
-        "title": "Efficiency Work Methods",
+        "title": "Home",
         "author": "Studio",
-        "description": "A concise portfolio of selected work, products, and experiments.",
-        "keywords": "portfolio, product design, content, tools, studio",
+        "description": "A concise landing page of selected work, products, and experiments.",
+        "keywords": "landing page, product design, content, tools, studio",
         "favicon": {
             "ico": "/assets/favicon.ico",
             "appleTouchIcon": "/assets/avatar.jpg"

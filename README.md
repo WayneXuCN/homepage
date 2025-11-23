@@ -1,8 +1,8 @@
-# Simple Portfolio
+# Simple Landing Page
 
 [English](README.md) | [中文](README_zh.md)
 
-A modern, responsive personal portfolio website built with **Next.js 16** and **Tailwind CSS**.
+A minimalist personal landing page and digital business card built with **Next.js 16** and **Tailwind CSS**.
 
 ## ✨ Features
 

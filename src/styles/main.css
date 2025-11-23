@@ -92,7 +92,7 @@ body {
   background-color: var(--underline-hover-color) !important;
 }
 
-/* 网站导航卡片样式 - 与原Portfolio样式保持一致 */
+/* 网站导航卡片样式 - 与原Website样式保持一致 */
 .website-item {
   transition:
     transform 0.3s ease,

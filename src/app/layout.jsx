@@ -20,8 +20,8 @@ const getDefaultMetadata = () => {
   const favicon = siteData.favicon || {};
 
   return {
-    title: siteData.title || 'Portfolio',
-    description: siteData.description || 'Personal Portfolio Website',
+    title: siteData.title || 'Landing Page',
+    description: siteData.description || 'Minimalist Personal Landing Page',
     icons: {
       icon: favicon.ico || '/favicon.ico',
       apple: favicon.appleTouchIcon || '/apple-touch-icon.png',
@@ -35,6 +35,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang='zh-CN' className={notoSans.variable} suppressHydrationWarning>
       <head>
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="徐文杰的主页" />
+        
         <link
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'

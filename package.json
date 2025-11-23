@@ -1,7 +1,7 @@
 {
-    "name": "SimplePortfolio",
+    "name": "SimpleLandingPage",
     "version": "1.1.0",
-    "description": "Personal portfolio website built with React and Tailwind CSS",
+    "description": "Minimalist personal landing page and digital business card built with React and Tailwind CSS",
     "main": "app.js",
     "scripts": {
         "dev": "next dev",

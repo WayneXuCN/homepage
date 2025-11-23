@@ -1,8 +1,8 @@
-# Simple Portfolio
+# Simple Landing Page
 
 [English](README.md) | [中文](README_zh.md)
 
-一个现代化的响应式个人网站，使用 **Next.js 16** 和 **Tailwind CSS** 构建。
+一个极简的个人落地页和数字名片，使用 **Next.js 16** 和 **Tailwind CSS** 构建。
 
 ## ✨ 特性
 

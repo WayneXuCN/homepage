@@ -26,10 +26,10 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             set -e  # 遇到错误立即退出
-            cd /opt/1panel/apps/openresty/openresty/www/sites/wenjiexusite/SimplePortfolio
+            cd /opt/1panel/apps/openresty/openresty/www/sites/wenjiexusite/LandingPage
 
             # 设置代理加速
-            git remote set-url origin https://gh.xmly.dev/https://github.com/WayneXuCN/SimplePortfolio
+            git remote set-url origin https://gh.xmly.dev/https://github.com/WayneXuCN/LandingPage
             
             # 拉取最新代码
             git config --global --add safe.directory "$(pwd)"

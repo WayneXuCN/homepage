@@ -1,6 +1,6 @@
 {
     "site": {
-        "title": "Efficiency Methodologies",
+        "title": "Home",
         "author": "Wenjie Xu",
         "description": "Wenjie Xu's Homepage. Ph.D. Candidate at Institutes of Science and Development, CAS. Focusing on Critical Infrastructure Risk Management and System Resilience.",
         "keywords": "Wenjie Xu, Ph.D. Candidate, Risk Management, Critical Infrastructure, System Resilience, Decision Analysis, CAS, ISD",
@@ -38,36 +38,36 @@
         "title": "Websites",
         "items": [
             {
-                "id": "personal",
-                "title": "Personal Site",
-                "subtitle": "Comprehensive Introduction",
+                "id": "Dashboard",
+                "title": "App Overview",
+                "subtitle": "Work Dashboard",
                 "image": "https://picsum.photos/seed/personal/600/350.jpg",
-                "url": "#",
-                "description": "More detailed information about me"
-            },
-            {
-                "id": "MyWork",
-                "title": "MyWork",
-                "subtitle": "Markdown Editor",
-                "image": "https://picsum.photos/seed/MyWork/600/350.jpg",
-                "url": "#",
-                "description": "A lightweight Markdown editing tool"
+                "url": "https://dashboard.wenjiexu.site",
+                "description": "My self-hosted work dashboard that aggregates information and common tools"
             },
             {
                 "id": "blog",
-                "title": "Tech Blog",
-                "subtitle": "Technical Insights",
+                "title": "Personal Blog",
+                "subtitle": "Sharing Personal Articles",
                 "image": "https://picsum.photos/seed/blog/600/350.jpg",
-                "url": "#",
-                "description": "Sharing frontend development and tech stacks"
+                "url": "https://lab.wenjiexu.site/blog",
+                "description": "Sharing personal articles, including tech insights, research experiences and life reflections"
             },
             {
                 "id": "projects",
-                "title": "Projects",
-                "subtitle": "Portfolio",
+                "title": "Personal Projects",
+                "subtitle": "Academic Research & Open Source Projects",
                 "image": "https://picsum.photos/seed/projects/600/350.jpg",
-                "url": "#",
-                "description": "A collection of my academic & coding projects"
+                "url": "https://lab.wenjiexu.site/projects",
+                "description": "Explore my academic research projects and open-source works"
+            },
+            {
+                "id": "personal",
+                "title": "Academic Homepage",
+                "subtitle": "Academic Homepage",
+                "image": "https://picsum.photos/seed/personal/600/350.jpg",
+                "url": "https://lab.wenjiexu.site",
+                "description": "My academic homepage, including personal introduction, academic activities and published papers"
             }
         ]
     },

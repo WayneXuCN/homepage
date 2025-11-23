@@ -9,7 +9,7 @@ const WebsiteItem = ({ item, priority = false }) => (
     target='_blank'
     rel='noopener noreferrer'
     aria-label={`访问 ${item.title}: ${item.description}`}
-    className='relative block overflow-hidden rounded-lg shadow-md card-hover portfolio-item website-item focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black dark:focus:ring-white'
+    className='relative block overflow-hidden rounded-lg shadow-md card-hover website-item focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black dark:focus:ring-white'
   >
     <div className='relative w-full h-64'>
       <Image
