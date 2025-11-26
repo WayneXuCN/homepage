@@ -1,0 +1,108 @@
+---
+/**
+ * BaseLayout.astro
+ * 全局布局组件，包含 meta、manifest、GA 条件脚本、主题初始化
+ */
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  author?: string;
+  keywords?: string;
+  lang?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Home',
+  description = '',
+  author = '',
+  keywords = '',
+  lang = 'en',
+  ogImage = '/assets/img/og-image.png',
+} = Astro.props;
+
+// GA ID 从环境变量获取（PUBLIC_ 前缀表示客户端可用）
+const gaId = import.meta.env.PUBLIC_GA_ID;
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta name="keywords" content={keywords} />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+    
+    <!-- Web Manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    
+    <!-- 
+      主题初始化脚本 - 必须在 body 渲染前执行
+      避免 FOUC (Flash of Unstyled Content)
+    -->
+    <script is:inline>
+      (function() {
+        function getTheme() {
+          if (typeof localStorage !== 'undefined') {
+            const stored = localStorage.getItem('theme');
+            if (stored === 'dark' || stored === 'light') return stored;
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        
+        const theme = getTheme();
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        
+        // 监听系统主题变化（当没有手动设置时）
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (!localStorage.getItem('theme')) {
+            document.documentElement.classList.toggle('dark', e.matches);
+          }
+        });
+      })();
+    </script>
+    
+    <!-- Google Analytics (条件注入) -->
+    {gaId && (
+      <>
+        <script is:inline define:vars={{ gaId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+      </>
+    )}
+  </head>
+  
+  <body class="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <main class="container mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-16 max-w-5xl">
+      <slot />
+    </main>
+  </body>
+</html>
