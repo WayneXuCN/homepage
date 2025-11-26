@@ -159,9 +159,16 @@ async function main() {
 
 main();
 
-function fetchUrl(url) {
+function fetchUrl(url, { attempts = 5, timeout = 10000, followRedirects = true } = {}) {
   return new Promise((resolve, reject) => {
-    const req = https.get(url, res => {
+    const agent = new https.Agent({ keepAlive: true });
+    const options = {
+      agent,
+      headers: {
+        'User-Agent': 'LandingPage-RSS-Fetcher/1.0 (+https://waynexucn.github.io)'
+      }
+    };
+    const req = https.get(url, options, res => {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
         return resolve(fetchUrl(res.headers.location));
       }
@@ -173,9 +180,32 @@ function fetchUrl(url) {
       res.on('data', chunk => (raw += chunk));
       res.on('end', () => resolve(raw));
     });
-    req.on('error', e => reject(e));
-    req.setTimeout(10000, () => {
+    req.on('error', e => {
+      // 如果是连接重置或超时等可重试错误，尝试重试
+      if (attempts > 1 && /ECONNRESET|ETIMEDOUT|EPIPE/.test(e.message)) {
+        const delay = 500 * Math.pow(2, 3 - attempts);
+        console.warn(`请求 ${url} 时遇到 ${e.message}，将在 ${delay}ms 后重试（剩余尝试次数 ${attempts - 1}）`);
+        setTimeout(() => {
+          fetchUrl(url, { attempts: attempts - 1, timeout, followRedirects })
+            .then(resolve)
+            .catch(reject);
+        }, delay);
+        return;
+      }
+      reject(e);
+    });
+    req.setTimeout(timeout, () => {
       req.destroy();
+      if (attempts > 1) {
+        const delay = 500 * Math.pow(2, 3 - attempts);
+        console.warn(`请求 ${url} 超时(${timeout}ms)，将在 ${delay}ms 后重试（剩余尝试次数 ${attempts - 1}）`);
+        setTimeout(() => {
+          fetchUrl(url, { attempts: attempts - 1, timeout, followRedirects })
+            .then(resolve)
+            .catch(reject);
+        }, delay);
+        return;
+      }
       reject(new Error('Request Timeout'));
     });
   });
